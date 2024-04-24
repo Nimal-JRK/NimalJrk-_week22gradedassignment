@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="login_style.css">
+    </head>
+    <body>
+        <div class="login-container">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <button onclick="login()">Login</button>
+            </div>
+            <p id="login-error" class="error-message"></p>
+        </div>
+</body>
+</html>
+<script>
+            const userName = document.getElementById('username');
+            const passWord = document.getElementById('password');
+            const error = document.getElementById('login-error');
+    
+            function login() {
+                const username = userName.value;
+                const password = passWord.value;
+                    if (username.trim() === '' || password.trim() === '') {
+                    error.textContent = 'Please enter username and password.';
+                    return;
+                }
+                    if (username === 'admin' && password === 'password') {
+    
+                    localStorage.setItem('username', username);
+                    
+                    window.location.href = 'resume.html';
+                } else {
+                    error.textContent = 'Invalid username/password.';
+                }
+            }
+            function check(){
+                if(localStorage.getItem('username')!=null)
+                {
+                    window.location.href = 'resume.html';
+                }
+            }
+            check();
+            
+        </script>
